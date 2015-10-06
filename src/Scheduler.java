@@ -3,11 +3,11 @@ public class Scheduler extends ActionComponent {
 	/**
 	 * Instantiate a Scheduler
 	 */
-	
-	public Scheduler(){
-		super.totalTime = 0;
+
+	public Scheduler(int timeToEnd) {
+		super(timeToEnd = 0);
 	}
-	
+
 	/**
 	 * 
 	 * @return boolean
@@ -26,7 +26,7 @@ public class Scheduler extends ActionComponent {
 	
 	public void doStep(){
 		super.isReady = false;
-		Action nextAction = super.actions.get(0);
+		ActionComponent nextAction = super.actions.get(0);
 		nextAction.doStep();
 		if(nextAction.isFinished()){
 			super.actions.remove(0);
