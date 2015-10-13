@@ -1,4 +1,4 @@
-package Action;
+package action;
 
 
 public class Foreseable extends ActionComponent {
@@ -7,10 +7,12 @@ public class Foreseable extends ActionComponent {
 		super(timeToEnd);
 	}
 	
+        @Override
 	public boolean isReady(){
 		return remainingTime == totalTime;
 	}
 	
+        @Override
 	public boolean isInProgress(){
 		return !isReady() && !isFinished();
 	}
@@ -19,6 +21,7 @@ public class Foreseable extends ActionComponent {
 		return remainingTime <= 0;
 	}
 	
+        @Override
 	public void doStep(){
 		remainingTime--;
 	}

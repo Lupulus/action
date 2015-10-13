@@ -1,9 +1,9 @@
-package Action;
+package action;
 
 
 import java.util.ArrayList;
 
-public class ActionComponent {
+public abstract class ActionComponent {
 
     protected final int totalTime;
     protected int remainingTime;
