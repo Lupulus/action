@@ -9,10 +9,17 @@ package resource;
  *
  * @author barbe
  */
-public class Basket extends Resource {
+public class CubiclePool extends ResourcePool {
 
-    public Basket() {
+    public CubiclePool(int poolNumber) {
+        super(poolNumber);
     }
+
+    @Override
+    public Resource factoryMethod() {
+        return new Cubicle(); 
+    }
+
     
     
 }

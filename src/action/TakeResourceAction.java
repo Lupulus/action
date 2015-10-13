@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package resource;
+package action;
 
 /**
  *
  * @author barbe
  */
-public class Basket extends Resource {
-
-    public Basket() {
-    }
-    
+public class TakeResourceAction {
     
 }

@@ -5,10 +5,34 @@
  */
 package resource;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author barbe
  */
-public class ResourcePool {
+public abstract class ResourcePool {
+    
+    private ArrayList pools;
+
+    public ResourcePool(int poolNumber) {
+        pools = new ArrayList();
+        for(int i=0; i < poolNumber; i++)
+            pools.add(factoryMethod());
+    }
+
+    
+    public Resource factoryMethod(){
+        return new Resource();
+    }
+    
+    public ArrayList getPools() {
+        return pools;
+    }
+
+    public void setPools(ArrayList pools) {
+        this.pools = pools;
+    }
+    
     
 }

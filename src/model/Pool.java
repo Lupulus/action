@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package resource;
+package model;
 
 /**
  *
  * @author barbe
  */
-public class Basket extends Resource {
-
-    public Basket() {
+public class Pool {
+    
+    public static void main(String[] args) {
+        
     }
-    
-    
 }

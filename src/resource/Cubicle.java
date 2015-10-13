@@ -9,10 +9,7 @@ package resource;
  *
  * @author barbe
  */
-public class Basket extends Resource {
-
-    public Basket() {
-    }
+public class Cubicle extends Resource {
     
     
 }

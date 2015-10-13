@@ -10,5 +10,16 @@ package resource;
  * @author barbe
  */
 public class BasketPool extends ResourcePool {
+
+    public BasketPool(int poolNumber) {
+        super(poolNumber);
+    }
+
+    @Override
+    public Resource factoryMethod() {
+        return new Basket();
+    }
+
+    
     
 }
