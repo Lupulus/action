@@ -1,3 +1,6 @@
+package Test;
+
+import Action.Scheduler;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
