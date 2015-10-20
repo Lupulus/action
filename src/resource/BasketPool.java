@@ -9,14 +9,14 @@ package resource;
  *
  * @author barbe
  */
-public class BasketPool extends ResourcePool {
+public class BasketPool extends ResourcePool<Basket> {
 
     public BasketPool(int poolNumber) {
         super(poolNumber);
     }
 
     @Override
-    public Resource factoryMethod() {
+    protected Basket createResource() {
         return new Basket();
     }
 

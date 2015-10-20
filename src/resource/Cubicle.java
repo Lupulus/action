@@ -9,7 +9,9 @@ package resource;
  *
  * @author barbe
  */
-public class Cubicle extends Resource {
+public class Cubicle implements Resource {
     
-    
+    public Cubicle(){
+    	
+    }
 }

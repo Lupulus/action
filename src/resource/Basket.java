@@ -9,7 +9,7 @@ package resource;
  *
  * @author barbe
  */
-public class Basket extends Resource {
+public class Basket implements Resource {
 
     public Basket() {
     }

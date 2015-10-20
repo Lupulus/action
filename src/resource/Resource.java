@@ -9,6 +9,8 @@ package resource;
  *
  * @author barbe
  */
+
 public interface Resource  {
+
     
 }

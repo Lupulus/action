@@ -6,6 +6,7 @@
 package resource;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -14,30 +15,44 @@ import java.util.ArrayList;
 public abstract class ResourcePool <R extends Resource> {
     
     private ArrayList <R> poolsFree;
-    private ArrayList <R>
+    private ArrayList <R> poolsUsed;
     
-    public ResourcePool<R> (int poolNumber) {
-        pools = new ArrayList();
+    public ResourcePool (int poolNumber) {
+        poolsFree = new ArrayList<R>(poolNumber);
+        poolsUsed = new ArrayList<R>(poolNumber);
         for(int i=0; i < poolNumber; i++)
-            pools.add(factoryMethod());
+            poolsFree.add(createResource());
     }
 
     
+
     protected abstract R createResource();
+
     
-    public ArrayList getPools() {
-        return pools;
+    public ArrayList<R> getPoolsFree() {
+        return poolsFree;
     }
 
-    public void setPools(ArrayList pools) {
-        this.pools = pools;
-    }
     
     public R provideRessource(){
-    	
+    	if(hasAvailableResource()){
+    		R resource = poolsFree.get(0);
+    		poolsFree.remove(0);
+    		poolsUsed.add(resource);
+    		return resource;
+    	}else
+    		throw new NoSuchElementException();
     }
     
-    public void freeRessource(){
-    	
+    public boolean hasAvailableResource(){
+    	return this.poolsFree.get(0) == null;
+    }
+    public void freeRessource(R resource ){
+    	int indexResourceUsed = this.poolsUsed.indexOf(resource);
+    	if(indexResourceUsed != -1){
+    		this.poolsUsed.remove(indexResourceUsed);
+    		this.poolsFree.add(resource);
+    	}//else
+    		//throw new NoGetArgumentExceptof();
     }
 }

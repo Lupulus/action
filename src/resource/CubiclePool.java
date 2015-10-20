@@ -9,14 +9,14 @@ package resource;
  *
  * @author barbe
  */
-public class CubiclePool extends ResourcePool {
+public class CubiclePool extends ResourcePool<Cubicle> {
 
     public CubiclePool(int poolNumber) {
         super(poolNumber);
     }
 
     @Override
-    public Resource factoryMethod() {
+    protected Cubicle createResource() {
         return new Cubicle(); 
     }
 
