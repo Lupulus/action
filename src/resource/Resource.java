@@ -9,6 +9,6 @@ package resource;
  *
  * @author barbe
  */
-public class Resource extends ResourcePool {
+public interface Resource  {
     
 }

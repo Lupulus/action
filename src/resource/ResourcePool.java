@@ -11,20 +11,19 @@ import java.util.ArrayList;
  *
  * @author barbe
  */
-public abstract class ResourcePool {
+public abstract class ResourcePool <R extends Resource> {
     
-    private ArrayList pools;
-
-    public ResourcePool(int poolNumber) {
+    private ArrayList <R> poolsFree;
+    private ArrayList <R>
+    
+    public ResourcePool<R> (int poolNumber) {
         pools = new ArrayList();
         for(int i=0; i < poolNumber; i++)
             pools.add(factoryMethod());
     }
 
     
-    public Resource factoryMethod(){
-        return new Resource();
-    }
+    protected abstract R createResource();
     
     public ArrayList getPools() {
         return pools;
@@ -34,5 +33,11 @@ public abstract class ResourcePool {
         this.pools = pools;
     }
     
+    public R provideRessource(){
+    	
+    }
     
+    public void freeRessource(){
+    	
+    }
 }
