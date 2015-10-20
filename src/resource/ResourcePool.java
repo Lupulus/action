@@ -11,6 +11,7 @@ import java.util.NoSuchElementException;
 /**
  *
  * @author barbe
+ * @param <R>
  */
 public abstract class ResourcePool <R extends Resource> {
     
@@ -27,12 +28,6 @@ public abstract class ResourcePool <R extends Resource> {
     
 
     protected abstract R createResource();
-
-    
-    public ArrayList<R> getPoolsFree() {
-        return poolsFree;
-    }
-
     
     public R provideRessource(){
     	if(hasAvailableResource()){
@@ -54,5 +49,22 @@ public abstract class ResourcePool <R extends Resource> {
     		this.poolsFree.add(resource);
     	}//else
     		//throw new NoGetArgumentExceptof();
+    }
+    
+        
+    public ArrayList<R> getPoolsFree() {
+        return poolsFree;
+    }
+
+    public void setPoolsFree(ArrayList<R> poolsFree) {
+        this.poolsFree = poolsFree;
+    }
+
+    public ArrayList<R> getPoolsUsed() {
+        return poolsUsed;
+    }
+
+    public void setPoolsUsed(ArrayList<R> poolsUsed) {
+        this.poolsUsed = poolsUsed;
     }
 }
