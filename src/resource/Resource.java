@@ -10,5 +10,8 @@ package resource;
  * @author barbe
  */
 public class Resource extends ResourcePool {
+
+    
+    
     
 }

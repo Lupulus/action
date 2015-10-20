@@ -16,7 +16,7 @@ public class CubiclePool extends ResourcePool {
     }
 
     @Override
-    public Resource factoryMethod() {
+    public Resource createResource() {
         return new Cubicle(); 
     }
 

@@ -16,7 +16,7 @@ public class BasketPool extends ResourcePool {
     }
 
     @Override
-    public Resource factoryMethod() {
+    public Resource createResource() {
         return new Basket();
     }
 

@@ -18,11 +18,11 @@ public abstract class ResourcePool {
     public ResourcePool(int poolNumber) {
         pools = new ArrayList();
         for(int i=0; i < poolNumber; i++)
-            pools.add(factoryMethod());
+            pools.add(createResource());
     }
 
     
-    public Resource factoryMethod(){
+    public Resource createResource(){
         return new Resource();
     }
     
