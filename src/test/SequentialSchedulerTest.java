@@ -1,4 +1,4 @@
-package action;
+package test;
 
 import exception.ActionFinishedException;
 import static org.junit.Assert.*;
