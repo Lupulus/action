@@ -1,59 +1,47 @@
 package action;
 
+import exception.ActionFinishedException;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class Scheduler extends ActionComponent {
-	/**
-	 * Instantiate a Scheduler
-	 */
 
+public abstract class Scheduler extends Action {
+	protected List<Action> actions;
+	
 	public Scheduler() {
-            super(0);
-	}
-
-	/**
-	 * return true is isInitialized and isReady are true, return false if not
-	 * @return boolean
-	 */
-        @Override
-	public boolean isReady(){
-		return super.isInitialized && super.isReady;
-	}
-	/**
-	 * return true is isInitialized, isReady() and isFinished are true, false if not
-	 * @return boolean
-	 */
-        @Override
-	public boolean isInProgress(){
-		return super.isInitialized && !isReady() && !isFinished();
+		super();
+		this.actions = new ArrayList<Action>();
 	}
 	
 	/**
-	 * return true if isInitiliazed, isReady are true and if the ArrayList actions is at the end
-	 * return false if not
-	 * @return boolean
+	 * @see action.Action#doStep()
 	 */
-        @Override
-	public boolean isFinished(){
-		return super.isInitialized && !isReady() && actions.isEmpty();
-	}
-	
-	
-	/**
-	 * 
-	 */
-        @Override
-	public void doStep(){
-		super.isReady = false;
-		ActionComponent nextAction = super.actions.get(0);
-		nextAction.doStep();
-		if(nextAction.isFinished()){
-			super.actions.remove(0);
+	public void doStep() throws ActionFinishedException{
+		super.doStep();
+		if(this.actions.isEmpty()){
+			throw new ActionFinishedException();
 		}
 	}
 	
+	public boolean isReady() {
+		return super.isReady();	
+	}
 	
+	public boolean isInProgress() {
+		return super.isInProgress();
+	}
 	
+	public boolean isFinished() {
+		return this.actions.isEmpty();
+	}
 	
+	/**
+	 * Add an action in the scheduler
+	 * @param a Action added
+	 */
+	public void addAction(Action a) {
+		this.actions.add(a);
+	}
 	
 	
 }

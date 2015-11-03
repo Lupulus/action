@@ -11,15 +11,24 @@ package resource;
  */
 public class CubiclePool extends ResourcePool<Cubicle> {
 
-    public CubiclePool(int poolNumber) {
-        super(poolNumber);
-    }
+    /**
+	 * Constructor of a new CubiclePool
+	 * @param length the size of this pool
+	 */
+	public CubiclePool(int length){
+		super(length);
+	}
 
-    @Override
-    protected Cubicle createResource() {
-        return new Cubicle(); 
-    }
-
+	/**
+	 * @see pool.ResourcePool#newInstance()
+	 */
+	protected Cubicle newInstance() {
+		return new Cubicle();	
+	}
+	
+	public String toString() {
+		return "cubicle";
+	}
     
     
 }

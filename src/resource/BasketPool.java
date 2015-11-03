@@ -11,15 +11,23 @@ package resource;
  */
 public class BasketPool extends ResourcePool<Basket> {
 
-    public BasketPool(int poolNumber) {
-        super(poolNumber);
-    }
+   	/**
+	 * The constructor of a new BasketPool
+	 * @param length the size of this pool
+	 */
+	public BasketPool(int length){
+		super(length);
+	}
 
-    @Override
-    protected Basket createResource() {
-        return new Basket();
-    }
-
-    
+	/**
+	 * @see pool.ResourcePool#newInstance()
+	 */
+	protected Basket newInstance() {
+		return new Basket();	
+	}
+	
+	public String toString() {
+		return "basket";
+	}
     
 }

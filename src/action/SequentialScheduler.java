@@ -11,33 +11,23 @@ import exception.ActionFinishedException;
  *
  * @author barbe
  */
-public class FairScheduler extends Scheduler {
+public class SequentialScheduler extends Scheduler {
     
-    private int index;
-	
-	public FairScheduler(){
+	public SequentialScheduler(){
 		super();
-		this.index = 0;
 	}
 
 	/**
-	 * Do a step for each action, one after another
+	 * Do all step for each action, one action after another
+     * @throws exception.ActionFinishedException
 	 */
-    @Override
+        @Override
 	public void doStep() throws ActionFinishedException {
 		super.doStep();
-		Action toDo = this.actions.get(index);
+		Action toDo = this.actions.get(0);
 		toDo.doStep();
 		if(toDo.isFinished()){
-			this.actions.remove(index);
-		}
-		
-		try {
-			if(this.actions.get(index+1) != null){
-				index++;
-			}
-		} catch (IndexOutOfBoundsException e) {
-			index = 0;
+			this.actions.remove(0);
 		}
 	}
 }

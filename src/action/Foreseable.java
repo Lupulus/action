@@ -1,28 +1,40 @@
 package action;
 
+import exception.ActionFinishedException;
 
-public class Foreseable extends ActionComponent {
 
+public class Foreseable extends Action {
+
+        private int remainingTime;
+	private int totalTime;
+	
 	public Foreseable(int timeToEnd){
-		super(timeToEnd);
+		super();
+		this.totalTime = timeToEnd;
+		this.remainingTime = timeToEnd;
 	}
 	
+	public int getRemainingTime() {
+		return remainingTime;
+	}
+
+	public int getTotalTime() {
+		return totalTime;
+	}
+
+	/**
+	 * Do a step for the action
+	 */
         @Override
-	public boolean isReady(){
-		return remainingTime == totalTime;
+	public void doStep() throws ActionFinishedException{
+		super.doStep();
+		if(this.remainingTime == 0)
+			throw new ActionFinishedException();
+		this.remainingTime--;
 	}
 	
-        @Override
-	public boolean isInProgress(){
-		return !isReady() && !isFinished();
-	}
-	
-	public boolean IsFinished(){
-		return remainingTime <= 0;
-	}
-	
-        @Override
-	public void doStep(){
-		remainingTime--;
+	public boolean isFinished(){
+		return this.remainingTime == 0;
 	}
 }
+	

@@ -1,50 +1,46 @@
 package action;
 
 
-import java.util.ArrayList;
+import exception.ActionFinishedException;
 
-public abstract class ActionComponent {
+public abstract class Action {
 
-    protected final int totalTime;
-    protected int remainingTime;
+    private boolean isReady;
+    private boolean isInitialized;
+	
+	public Action() {
+		this.isReady = true;
+		this.isInitialized = true;
+	}
 
-    protected boolean isReady = true;
-    protected boolean isInitialized;
-
-    protected boolean isScheduler;
-
-    //this variable is only used for schedulers
-    protected final ArrayList<ActionComponent> actions = new ArrayList<ActionComponent>();
-
-    public ActionComponent(int timeToEnd) {
-        this.totalTime= timeToEnd;
-    }
-
-    public boolean isReady() {
-        return false;
-    }
-
-    public boolean isInProgress() {
-        return false;
-    }
-
-    public boolean isFinished() {
-        return false;
-    }
-
-    public void doStep() {
-
-    }
-
-    public void addAction(ActionComponent action) {
-        isInitialized = true;
-        if (action.isFinished()) {
-            throw new IllegalArgumentException("Can't add an already finished action");
-        }
-        if (isFinished()) {
-            throw new IllegalStateException("You can't add an action to finish a scheduler");
-        } else {
-            actions.add(action);
-        }
-    }
+	/**
+	 * Return true if the action is initialized and ready (not begun)
+	 * @return true if the action is ready, false if not
+	 */
+	public boolean isReady() {
+		return this.isInitialized && this.isReady;
+	}
+	
+	
+	/**
+	 * Return true if the action is initialized and begun
+	 * @return true if the action started, false if not
+	 */
+	public boolean isInProgress() {
+		return this.isInitialized && !this.isReady() && !this.isFinished();
+	}
+	
+	/**
+	 * Return true if the action is finished
+	 * @return true if the action is finished, false if not
+	 */
+	public abstract boolean isFinished();
+	
+	/**
+	 * Do a step for the action
+	 * @throws ActionFinishedException The action is already finished
+	 */
+	public void doStep() throws ActionFinishedException {
+		this.isReady = false;
+	}
 }

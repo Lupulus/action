@@ -5,7 +5,8 @@
  */
 package resource;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -15,56 +16,78 @@ import java.util.NoSuchElementException;
  */
 public abstract class ResourcePool <R extends Resource> {
     
-    private ArrayList <R> poolsFree;
-    private ArrayList <R> poolsUsed;
-    
-    public ResourcePool (int poolNumber) {
-        poolsFree = new ArrayList<R>(poolNumber);
-        poolsUsed = new ArrayList<R>(poolNumber);
-        for(int i=0; i < poolNumber; i++)
-            poolsFree.add(createResource());
-    }
+	/**
+	 * The list of the resource available
+	 */
+	protected List<R> resources;
+	
+	/**
+	 * The list of the resource not available
+	 */
+	protected List<R> provideRes;
+	
 
-    
-
-    protected abstract R createResource();
-    
-    public R provideRessource(){
-    	if(hasAvailableResource()){
-    		R resource = poolsFree.get(0);
-    		poolsFree.remove(0);
-    		poolsUsed.add(resource);
-    		return resource;
-    	}else
-    		throw new NoSuchElementException();
-    }
-    
-    public boolean hasAvailableResource(){
-    	return this.poolsFree.get(0) == null;
-    }
-    public void freeRessource(R resource ){
-    	int indexResourceUsed = this.poolsUsed.indexOf(resource);
-    	if(indexResourceUsed != -1){
-    		this.poolsUsed.remove(indexResourceUsed);
-    		this.poolsFree.add(resource);
-    	}//else
-    		//throw new NoGetArgumentExceptof();
-    }
-    
-        
-    public ArrayList<R> getPoolsFree() {
-        return poolsFree;
-    }
-
-    public void setPoolsFree(ArrayList<R> poolsFree) {
-        this.poolsFree = poolsFree;
-    }
-
-    public ArrayList<R> getPoolsUsed() {
-        return poolsUsed;
-    }
-
-    public void setPoolsUsed(ArrayList<R> poolsUsed) {
-        this.poolsUsed = poolsUsed;
-    }
+	/**
+	 * The constructor of a ResourcePool
+	 * @param length The size capacity of this resource pool
+	 */
+	public ResourcePool(int length) {
+		super();
+		this.resources = new LinkedList<R>();
+		this.provideRes = new LinkedList<R>();
+		for(int i = 0; i < length; i++) {
+			this.resources.add(this.newInstance());
+		}
+	}
+	
+	/**
+	 * Factory method to create an instance of a new object extends of Resource
+	 * @return A new instace of an object extends of Resource
+	 */
+	protected abstract R newInstance() ;
+	
+	/**
+	 * Take one resource of this resource pool and passed this resource in status not available
+	 * @return The resource taken
+	 * @exception NoSuchElementException if the list of the resource available is empty
+	 */
+	public R provideResource() {
+		if(this.resources.size() == 0)
+			throw new NoSuchElementException();
+		
+		R res = resources.remove(0);
+		this.provideRes.add(res);
+		
+		return res;	
+	}
+	
+	/**
+	 * Return a resource on the list of resource available and remove this resource on the list of resources not available
+	 * @param res The resource to return
+	 * @exception IllegalArgumentException if the resource is not valid
+	 */
+	public void freeResource(R res) {
+		if(!this.provideRes.contains(res)) {
+			throw new IllegalArgumentException();
+		}
+		
+		provideRes.remove(res);
+		this.resources.add(res);
+	}
+	
+	/**
+	 * Get the list of the resources available
+	 * @return the list of the resources available
+	 */
+	public List<R> getResourceList() {
+		return this.resources;
+	}
+	
+	/**
+	 * Get the list of the resources not available
+	 * @return the list of the resources not available
+	 */
+	public List<R> getProvideResourceList() {
+		return this.provideRes;
+	}
 }

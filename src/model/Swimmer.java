@@ -5,21 +5,31 @@
  */
 package model;
 
+import action.FreeResourceAction;
+import action.SequentialScheduler;
+import action.SwimmerForeseableAction;
+import action.TakeResourceAction;
+import exception.ActionFinishedException;
+import resource.Basket;
 import resource.BasketPool;
+import resource.Cubicle;
 import resource.CubiclePool;
+import resource.ResourcefulUser;
 
 /**
  *
  * @author barbe
  */
-public class Swimmer {
+public class Swimmer extends SequentialScheduler {
    
     private String name;
     private BasketPool basketPool;
     private CubiclePool cubiclePool;
     private int undressingTime;
     private int swimmingTime;
-    private int dressingTime;
+    private int dressingTime;  
+    private ResourcefulUser<Basket> basket;
+    private ResourcefulUser<Cubicle> cubicle;
 
     public Swimmer(String name, BasketPool basketPool, CubiclePool cubiclePool, int undressingTime, int swimmingTime, int dressingTime) {
         this.name = name;
@@ -28,8 +38,29 @@ public class Swimmer {
         this.undressingTime = undressingTime;
         this.swimmingTime = swimmingTime;
         this.dressingTime = dressingTime;
+        this.basket = new ResourcefulUser<Basket>(this);
+	this.cubicle = new ResourcefulUser<Cubicle>(this);
+		
+	this.addAction(new TakeResourceAction<Basket>(this.basketPool, this.basket));
+	this.addAction(new TakeResourceAction<Cubicle>(this.cubiclePool, this.cubicle));
+	this.addAction(new SwimmerForeseableAction(this.undressingTime, name+" undressing"));
+	this.addAction(new FreeResourceAction<Cubicle>(this.cubiclePool, this.cubicle));
+	this.addAction(new SwimmerForeseableAction(this.swimmingTime, name+" swimming"));
+	this.addAction(new TakeResourceAction<Cubicle>(this.cubiclePool, this.cubicle));
+	this.addAction(new SwimmerForeseableAction(this.dressingTime, name+" dressing"));
+	this.addAction(new FreeResourceAction<Cubicle>(this.cubiclePool, this.cubicle));
+	this.addAction(new FreeResourceAction<Basket>(this.basketPool, this.basket));
     }
-
+    
+    /**
+    * @see SequentialScheduler#doStep()
+    */
+    @Override
+    public void doStep() throws ActionFinishedException {
+	System.out.println(this.name + "'s turn");
+            super.doStep();
+    }
+	
     public String getName() {
         return name;
     }
