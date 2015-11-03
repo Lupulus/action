@@ -3,15 +3,34 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/l3/barbe/workspace/action/src/resource/Basket.java</file>
-            <file>file:/home/l3/barbe/workspace/action/src/test/ForeseableTest.java</file>
-            <file>file:/home/l3/barbe/workspace/action/src/resource/ResourcePool.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/action/ResourceAction.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/test/ActionTest.java</file>
             <file>file:/home/l3/barbe/workspace/action/src/resource/Resource.java</file>
             <file>file:/home/l3/barbe/workspace/action/src/resource/ResourcefulUser.java</file>
-            <file>file:/home/l3/barbe/workspace/action/src/action/ActionComponent.java</file>
-            <file>file:/home/l3/barbe/workspace/action/src/action/Foreseable.java</file>
-            <file>file:/home/l3/barbe/workspace/action/src/action/Scheduler.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/test/TestBasket.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/action/TakeResourceAction.java</file>
             <file>file:/home/l3/barbe/workspace/action/src/resource/BasketPool.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/action/SequentialScheduler.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/action/SwimmerForeseableAction.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/test/TestResource.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/resource/ResourcePool.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/test/SequentialSchedulerTest.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/model/Pool.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/test/TestCubicle.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/action/Scheduler.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/action/FairScheduler.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/exception/ActionFinishedException.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/action/Foreseable.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/test/SchedulerTest.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/resource/Basket.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/test/TestResourcePool.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/action/Action.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/resource/Cubicle.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/test/TestCubiclePool.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/action/FreeResourceAction.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/resource/CubiclePool.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/model/Swimmer.java</file>
+            <file>file:/home/l3/barbe/workspace/action/src/test/FairSchedulerTest.java</file>
         </group>
     </open-files>
 </project-private>

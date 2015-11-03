@@ -14,4 +14,12 @@ public class Cubicle implements Resource {
     public Cubicle(){
     	
     }
+    
+    /**
+     * @return 
+     * @see resource.Resource#description()
+     */
+    public String description() {
+	return "cubicle";	
+    }
 }

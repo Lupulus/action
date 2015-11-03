@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public abstract class Scheduler extends Action {
-	protected List<Action> actions;
+	public List<Action> actions;
 	
 	public Scheduler() {
 		super();

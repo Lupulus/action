@@ -14,5 +14,11 @@ public class Basket implements Resource {
     public Basket() {
     }
     
-    
+    /**
+     * @return 
+     * @see resource.Resource#description()
+     */
+    public String description() {
+	return "basket";	
+    }
 }
