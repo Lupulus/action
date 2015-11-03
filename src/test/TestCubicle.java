@@ -12,7 +12,7 @@ public class TestCubicle extends TestResource {
 
 	@Override
 	protected String resultDescription() {
-		return "A cubicle";
+		return "cubicle";
 	}
 
 }

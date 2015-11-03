@@ -12,7 +12,7 @@ public class TestBasket extends TestResource {
 
 	@Override
 	protected String resultDescription() {
-		return "A basket";
+		return "basket";
 	}
 
 }
