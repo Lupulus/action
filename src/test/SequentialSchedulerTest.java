@@ -1,6 +1,9 @@
-package action;
+package test;
 
-import exception.ActionFinishedException;
+import action.Action;
+import action.Foreseable;
+import action.Scheduler;
+import action.SequentialScheduler;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
